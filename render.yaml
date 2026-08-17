@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: telegram-nft-finder
+    runtime: python
+
+    buildCommand: pip install -r requirements.txt
+
+    startCommand: python main.py
+
+    envVars:
+
+      - key: BOT_TOKEN
+        sync: false
+
+      - key: WEBHOOK_HOST
+        sync: false
+
+      - key: PEEK_API_URL
+        value: https://peek.tg/api/nft/gifts/search
+
+      - key: SEARCH_PAGES
+        value: "20"
+
+      - key: SEARCH_CONCURRENCY
+        value: "8"
+
+      - key: REQUEST_TIMEOUT
+        value: "12"
